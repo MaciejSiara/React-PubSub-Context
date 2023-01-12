@@ -2,8 +2,7 @@ import { Name } from "../../types";
 import { IExampleContextState, useStore } from "./ExampleContext";
 
 export const useExampleContext = <SelectorOutput>(
-  selector: (store: IExampleContextState) => SelectorOutput = () =>
-    null as SelectorOutput
+  selector?: (store: IExampleContextState) => SelectorOutput
 ) => {
   const { store, setStore } = useStore(selector);
 

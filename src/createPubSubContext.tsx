@@ -52,7 +52,7 @@ export const createPubSubContext = <Store,>() => {
   }
 
   function useStore<SelectorOutput>(
-    selector: (store: Store) => SelectorOutput
+    selector: (store: Store) => SelectorOutput = () => null as SelectorOutput
   ): {
     store: SelectorOutput;
     setStore: UseStoreDataReturnType<Store>["set"];
@@ -66,6 +66,9 @@ export const createPubSubContext = <Store,>() => {
     const [state, setState] = React.useState(selector(store.get()));
 
     React.useEffect(() => {
+      // const callback = () => setState(selector(store.get()));
+      // subscribers.current.add(callback);
+      // return () => subscribers.current.delete(callback);
       return store.subscribe(() => setState(selector(store.get())));
     }, []);
 
