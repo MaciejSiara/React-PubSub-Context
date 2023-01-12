@@ -13,7 +13,7 @@ const ExampleContextProvider = ({ children }: { children: React.ReactNode }) => 
   return <Provider value={initialState}>{children}</Provider>;
 };
 
-const useExampleContext = <SelectorOutput>( selector: (store: IStore) => SelectorOutput = () => null as SelectorOutput
+const useExampleContext = <SelectorOutput>( selector: (store: IStore) => SelectorOutput
 ) => {
   const { store, setStore } = useStore(selector);
 
